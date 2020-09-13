@@ -9,15 +9,21 @@ class UsersController < ApplicationController
 	end
 	
 	def edit
+		authorize @user
 	end
 	
 	def update
+		authorize @user
 		if @user.update(user_params)
 			redirect_to users_path, notice: 'User roles were successfully updated.'
 		else
 			render :edit
 		end
 	end
+	
+	# def show
+	# 	@users = User.all
+	# end
 	
 	
 	private
